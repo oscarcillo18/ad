@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Data;
-
-using Serpis.Ad;
-
-using System;
 using Gtk;
 
-namespace CCategoria
+namespace CArticulo
 {
 	class MainClass
 	{

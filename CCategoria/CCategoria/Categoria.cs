@@ -1,26 +1,25 @@
 ﻿using System;
 namespace CCategoria
 {
-	public class Categoria
-	{
-		public Categoria()
-		{
-			nombre = "";
-		}
+    public class Categoria
+    {
+        public Categoria()
+        {
+            nombre = "";
+        }
 
-		private long id;
-		private string nombre;
+        private long id;
+        private string nombre;
 
-		public long Id
-		{
-			get { return id; }
-			set { id = value; }
-		}
+        public long Id {
+            get { return id; }
+            set { id = value; }
+        }
 
-		public string Nombre
-		{
-			get { return nombre; }
-			set { nombre = value; }
-		}
-	}
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+    }
 }

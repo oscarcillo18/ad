@@ -54,9 +54,6 @@
       <HintPath>..\..\CSerpisAd\CSerpisAd\bin\Debug\CSerpisAd.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\mysql\MySql.Data.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

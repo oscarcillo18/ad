@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{86B51829-D8EA-4E0C-8823-995DE8ACA001}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CComboBox/MainWindow.cs">
+    <Files>
+      <File FileName="CComboBox/MainWindow.cs" Line="13" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CArticulo" expanded="True" />
+          <Node name="CCategoria" expanded="True" />
+          <Node name="CComboBox" expanded="True" selected="True">
+            <Node name="CComboBox" expanded="True">
+              <Node name="References" expanded="True" />
+              <Node name="UserInterface" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
+          </Node>
+          <Node name="CSerpisAd" expanded="True">
+            <Node name="CSerpisAd" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CComboBox PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

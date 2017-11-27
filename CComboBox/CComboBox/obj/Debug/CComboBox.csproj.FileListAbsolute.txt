@@ -1,0 +1,1 @@
+/home/oscpal/Projects/CComboBox/CComboBox/obj/Debug/CComboBox.csproj.CoreCompileInputs.cache

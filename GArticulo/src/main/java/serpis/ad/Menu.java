@@ -32,6 +32,7 @@ public class Menu {
                         break;
                     case 3:
                         System.out.println("Editar");
+                        ArticuloDao.Editar();
                         break;
                     case 4:
                     	System.out.println("Eliminar");
@@ -39,9 +40,11 @@ public class Menu {
                         break;
                     case 5:
                     	System.out.println("Consultar");
+                    	ArticuloDao.Consultar();
                         break;
                     case 6:
                     	System.out.println("Listar");
+                    	ArticuloDao.Listar();
                         break;
                     default:
                         System.out.println("Solo números entre 1 y 6");

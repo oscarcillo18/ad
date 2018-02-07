@@ -1,55 +1,37 @@
 package serpis.ad;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
 import javax.persistence.*;
 
 @Entity
 public class PedidoLinea {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private BigInteger id;
-	private BigInteger pedido;
-	private BigInteger articulo;
-	private BigDecimal precio;
-	private BigDecimal unidades;
-	private BigDecimal importe;
-	public BigInteger getId() {
-		return id;
-	}
-	public void setId(BigInteger id) {
+	private long id;
+	
+	public void setId(long id) {
 		this.id = id;
 	}
-	public BigInteger getPedido() {
-		return pedido;
-	}
-	public void setPedido(BigInteger pedido) {
+	
+	@ManyToOne
+	@JoinColumn(name="pedido")
+	private Pedido pedido;
+	
+	@ManyToOne
+	@JoinColumn(name="articulo")
+	private Articulo articulo;
+	
+	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
-	public BigInteger getArticulo() {
-		return articulo;
-	}
-	public void setArticulo(BigInteger articulo) {
+	
+	public void setArticulo(Articulo articulo) {
 		this.articulo = articulo;
 	}
-	public BigDecimal getPrecio() {
-		return precio;
-	}
-	public void setPrecio(BigDecimal precio) {
-		this.precio = precio;
-	}
-	public BigDecimal getUnidades() {
-		return unidades;
-	}
-	public void setUnidades(BigDecimal unidades) {
-		this.unidades = unidades;
-	}
-	public BigDecimal getImporte() {
-		return importe;
-	}
-	public void setImporte(BigDecimal importe) {
-		this.importe = importe;
+	
+	@Override
+	public String toString() {
+		return String.format("[%s] (%s)", id, pedido);
+
 	}
 	
 }

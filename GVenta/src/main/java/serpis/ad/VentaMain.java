@@ -4,13 +4,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import org.w3c.dom.events.Event;
-import org.jboss.*;
 
 
 public class VentaMain {
@@ -23,13 +20,15 @@ private static EntityManagerFactory entityManagerFactory;
 		
 		//showCategorias();
 		//showArticulos();
-		showCliente();
-		
-		
-		
 		//showCliente();
-		//newPedido();
 		//showPedidos();
+		
+		
+
+		newPedido();
+		showPedidos();
+		//newArticulo();
+
 		
 		entityManagerFactory.close();
 		
@@ -50,41 +49,61 @@ private static EntityManagerFactory entityManagerFactory;
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		List<Articulo> articulos= entityManager
-				.createQuery("from Articulo order by id", Articulo.class).getResultList();
+				.createQuery("from Articulo order by id", Articulo.class)
+				.getResultList();
 		for (Articulo articulo: articulos)
 			System.out.println(articulo);
 		entityManager.getTransaction().commit();
 	}
 	
-	private static void showCliente() {
-	EntityManager entityManager = entityManagerFactory.createEntityManager();
-	entityManager.getTransaction().begin();
-	List<Cliente> clientes = entityManager
-			.createQuery("from Cliente order by id", Cliente.class).getResultList();
-	for (Cliente cliente: clientes)
-		System.out.println(cliente);
-	entityManager.getTransaction().commit();
+	private static void newArticulo() {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		Categoria categoria = entityManager.getReference(Categoria.class, 1L);
+		Articulo articulo = new Articulo();
+		articulo.setNombre("nuevo " + new Date());
+		articulo.setPrecio(new BigDecimal(6));
+		articulo.setCategoria(categoria);
+		entityManager.persist(articulo);
+		entityManager.getTransaction().commit();
 	}
 	
-	/* private static void showPedidos() {
+	private static void showCliente() {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		List<Cliente> clientes = entityManager
+				.createQuery("from Cliente order by id", Cliente.class).getResultList();
+		for (Cliente cliente: clientes)
+		System.out.println(cliente);
+		entityManager.getTransaction().commit();
+	}
+	
+	private static void showPedidos() {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
 		List<Pedido> pedidos = entityManager
-				.createQuery("from pedido order by id", Pedido.class).getResultList();
+				.createQuery("from Pedido order by id", Pedido.class).getResultList();
 		for (Pedido pedido : pedidos)
 			System.out.println(pedido);
 		entityManager.getTransaction().commit();
-	} */
+	} 
 	
-	/*
 	private static void newPedido() {
-		System.out.println("Creando pedido nuevo ");
-		Pedido pedido = new Pedido();
-		pedido.setFecha(new Date());
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		entityManager.getTransaction().begin();
+		
+		Pedido pedido = new Pedido();
+		Cliente cliente = entityManager.getReference(Cliente.class, 1L);
+		pedido.setCliente(cliente);
+		PedidoLinea pedidoLinea1 = new PedidoLinea();
+		//0jo: las dos sentencias siguientes mantienen sincronizada la asosación.
+		pedido.getPedidoLineas().add(pedidoLinea1);
+		pedidoLinea1.setPedido(pedido);
+		Articulo articulo = entityManager.getReference(Articulo.class, 1L);
+		pedidoLinea1.setArticulo(articulo);
+		
+		
 		entityManager.persist(pedido);
-		System.out.println("Creada " + pedido);
 		entityManager.getTransaction().commit();
-	}*/
+	}
 }
